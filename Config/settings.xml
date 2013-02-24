@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NetDog.Settings>
+  <setting name="Setting" serializeAs="String">
+    <value>adaw</value>
+  </setting>
+</NetDog.Settings>

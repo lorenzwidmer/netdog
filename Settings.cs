@@ -85,7 +85,7 @@ namespace NetDog
             XmlNode root = doc["config"];
             PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (PropertyInfo bla in properties)
+            foreach (PropertyInfo property in properties)
             {
                 string xPath = String.Format("//setting[@name='{0}']", bla.Name);
                 XmlElement element = (XmlElement)root.SelectSingleNode(xPath);
@@ -97,8 +97,8 @@ namespace NetDog
                 if (element.Attributes["type"].InnerText != bla.PropertyType.ToString())
                 {
                     throw new Exception(String.Format("Property {0} has a wrong Type, {1} instead of {2}",
-                        bla.Name,
-                        bla.PropertyType,
+                        property.Name,
+                        property.PropertyType,
                         element.Attributes["type"].InnerText));
                 }
             }
