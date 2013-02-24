@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SharpPcap;
+using System;
+using System.Reflection;
+using System.Drawing;
 using System.Text.RegularExpressions;
-using SharpPcap;
-using SharpPcap.WinPcap;
 
 namespace NetDog
 {
@@ -68,6 +65,8 @@ namespace NetDog
             device.StopCapture();
             device.Close();
         }
+
+
 
         /// <summary>
         /// Prints the type and length of each received packet. Getting the Type

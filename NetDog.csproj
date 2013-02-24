@@ -32,14 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FirebirdSql.Data.FirebirdClient">
-      <HintPath>Firebird\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=3.0.2.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Firebird\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
-    <Reference Include="SharpPcap">
-      <HintPath>SharpPcap\SharpPcap.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Json.Net\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpPcap, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\SharpPcap\SharpPcap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,18 +54,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\main.cs" />
+    <Compile Include="Properties\main.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>main.settings</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Setting.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="test.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
+    <None Include="Library\SharpPcap\SharpPcap.dll.config" />
+    <None Include="Properties\main.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>main.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\Firebird\firebird.conf" />
+    <None Include="Tools\Firebird\firebird.log" />
+    <None Include="Tools\Firebird\firebird.msg" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Config\" />
-    <Folder Include="Firebird\" />
-    <Folder Include="SharpPcap\" />
+    <Content Include="Config\settings.xml" />
+    <Content Include="Library\Firebird\FirebirdSql.Data.FirebirdClient.dll" />
+    <Content Include="Library\Firebird\FirebirdSql.Data.FirebirdClient.pdb" />
+    <Content Include="Library\Json.Net\Newtonsoft.Json.dll" />
+    <Content Include="Library\Json.Net\Newtonsoft.Json.pdb" />
+    <Content Include="Library\Json.Net\Newtonsoft.Json.xml" />
+    <Content Include="Library\Packet.NET\PacketDotNet.dll" />
+    <Content Include="Library\Packet.NET\PacketDotNet.xml" />
+    <Content Include="Library\SharpPcap\SharpPcap.dll" />
+    <Content Include="Library\SharpPcap\SharpPcap.xml" />
+    <Content Include="Tools\Firebird\fbclient.dll" />
+    <Content Include="Tools\Firebird\ib_util.dll" />
+    <Content Include="Tools\Firebird\icudt30.dll" />
+    <Content Include="Tools\Firebird\icuin30.dll" />
+    <Content Include="Tools\Firebird\icuuc30.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
