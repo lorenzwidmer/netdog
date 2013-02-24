@@ -1,0 +1,7 @@
+<config>
+  <setting name="User" type="System.String">"SYSDBA"</setting>
+  <setting name="Password" type="System.String">"masterkey"</setting>
+  <setting name="Database" type="NetDog.Path">".\\Tools\\Firebird\\DB.FDB"</setting>
+  <setting name="Charset" type="System.String">"UTF8"</setting>
+  <setting name="Dialect" type="System.Int16">3</setting>
+</config>

@@ -11,6 +11,21 @@
     <AssemblyName>NetDog</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,32 +69,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\main.cs" />
-    <Compile Include="Properties\main.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>main.settings</DependentUpon>
-    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Config\DB.cs" />
+    <Compile Include="Config\NetDog.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="test.cs" />
+    <Compile Include="Config\SettingFile.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Library\SharpPcap\SharpPcap.dll.config" />
-    <None Include="Properties\main.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>main.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Tools\Firebird\firebird.conf" />
     <None Include="Tools\Firebird\firebird.log" />
     <None Include="Tools\Firebird\firebird.msg" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Config\settings.xml" />
     <Content Include="Library\Firebird\FirebirdSql.Data.FirebirdClient.dll" />
     <Content Include="Library\Firebird\FirebirdSql.Data.FirebirdClient.pdb" />
     <Content Include="Library\Json.Net\Newtonsoft.Json.dll" />
@@ -94,6 +98,23 @@
     <Content Include="Tools\Firebird\icudt30.dll" />
     <Content Include="Tools\Firebird\icuin30.dll" />
     <Content Include="Tools\Firebird\icuuc30.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,3 @@
+<config>
+  <setting name="FirebirdClient" type="NetDog.Path">".\\Tools\\Firebird\\fbclient.dll"</setting>
+</config>

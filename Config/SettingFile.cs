@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Xml;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace NetDog
+namespace NetDog.Config
 {
-    class Settings
+    class SettingFile
     {
         private Dictionary<string, object> _settings;
+        private Type _validator;
 
-        public Settings()
+        public SettingFile(Type validator)
         {
             _settings = new Dictionary<string, object>();
+            _validator = validator;
         }
 
-        protected object this[string key]
+        public object this[string key]
         {
             get
             {
@@ -37,7 +39,7 @@ namespace NetDog
             }
         }
 
-        public void Save(string path)
+        public void Save(Path path)
         {
             XmlDocument doc = new XmlDocument();
             doc.AppendChild(doc.CreateElement("config"));
@@ -49,7 +51,7 @@ namespace NetDog
                 XmlAttribute type = doc.CreateAttribute("type");
 
                 name.InnerText = setting.Key;
-                type.InnerText = this.GetType().GetProperty(setting.Key, BindingFlags.Public | BindingFlags.Instance).PropertyType.ToString();
+                type.InnerText = _validator.GetProperty(setting.Key, BindingFlags.Public | BindingFlags.Static).PropertyType.ToString();
                 Console.WriteLine(type.InnerText);
 
                 element.InnerText = JsonConvert.SerializeObject(setting.Value);
@@ -63,8 +65,13 @@ namespace NetDog
             doc.Save(path);
         }
 
-        public void Load(string path)
+        public void Load(Path path)
         {
+            if (!File.Exists(path))
+            {
+                return;
+            }
+
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
@@ -83,18 +90,18 @@ namespace NetDog
         public void Validate(XmlDocument doc)
         {
             XmlNode root = doc["config"];
-            PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            PropertyInfo[] properties = _validator.GetProperties(BindingFlags.Public | BindingFlags.Static);
 
             foreach (PropertyInfo property in properties)
             {
-                string xPath = String.Format("//setting[@name='{0}']", bla.Name);
+                string xPath = String.Format("//setting[@name='{0}']", property.Name);
                 XmlElement element = (XmlElement)root.SelectSingleNode(xPath);
 
                 if (element == null)
                 {
-                    throw new Exception(String.Format("Property {0} is missing", bla.Name));
+                    throw new Exception(String.Format("Property {0} is missing", property.Name));
                 }
-                if (element.Attributes["type"].InnerText != bla.PropertyType.ToString())
+                if (element.Attributes["type"].InnerText != property.PropertyType.ToString())
                 {
                     throw new Exception(String.Format("Property {0} has a wrong Type, {1} instead of {2}",
                         property.Name,
