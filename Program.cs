@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using FirebirdSql.Data.FirebirdClient;
 
 namespace NetDog
 {
@@ -12,20 +13,6 @@ namespace NetDog
     {
         static void Main(string[] args)
         {
-            //Config.DB.User = "SYSDBA";
-            //Config.DB.Password = "masterkey";
-            //Config.DB.Database = new Path(@".\Tools\Firebird\DB.FDB");
-            //Config.DB.Charset = "UTF8";
-            //Config.DB.Dialect = 3;
-            //Config.DB.Save();
-
-            //Config.NetDog.FirebirdClient = new Path(@".\Tools\Firebird\fbclient.dll");
-            //Config.NetDog.Save();
-
-            Console.WriteLine(Config.DB.User);
-            Console.WriteLine(Config.NetDog.FirebirdClient);
-
-            Console.ReadLine();
             CaptureDeviceList devices = CaptureDeviceList.Instance;
 
             if (devices.Count < 1)

@@ -1,60 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using System.Xml;
+﻿using Newtonsoft.Json;
+using System;
 using System.Reflection;
-using Newtonsoft.Json;
+using System.Xml;
 
 namespace NetDog.Config
 {
     class SettingFile
     {
-        private Dictionary<string, object> _settings;
         private Type _validator;
 
-        public SettingFile(Type validator)
+        public SettingFile(Type validator, Path path)
         {
-            _settings = new Dictionary<string, object>();
             _validator = validator;
-        }
-
-        public object this[string key]
-        {
-            get
-            {
-                return _settings[key];
-            }
-            set
-            {
-                if (_settings.ContainsKey(key))
-                {
-                    _settings[key] = value;
-                }
-                else
-                {
-                    _settings.Add(key, value);
-                }
-            }
+            Load(path);
         }
 
         public void Save(Path path)
         {
             XmlDocument doc = new XmlDocument();
+            PropertyInfo[] properties = _validator.GetProperties(BindingFlags.Public | BindingFlags.Static);
             doc.AppendChild(doc.CreateElement("config"));
 
-            foreach (KeyValuePair<string, object> setting in _settings)
+            foreach (PropertyInfo property in properties)
             {
+                object value = property.GetValue(null);
                 XmlElement element = doc.CreateElement("setting");
                 XmlAttribute name = doc.CreateAttribute("name");
                 XmlAttribute type = doc.CreateAttribute("type");
 
-                name.InnerText = setting.Key;
-                type.InnerText = _validator.GetProperty(setting.Key, BindingFlags.Public | BindingFlags.Static).PropertyType.ToString();
-                Console.WriteLine(type.InnerText);
+                name.InnerText = property.Name;
+                type.InnerText = property.PropertyType.ToString();
 
-                element.InnerText = JsonConvert.SerializeObject(setting.Value);
+                element.InnerText = JsonConvert.SerializeObject(value);
                 element.Attributes.Append(name);
                 element.Attributes.Append(type);
 
@@ -67,11 +44,6 @@ namespace NetDog.Config
 
         public void Load(Path path)
         {
-            if (!File.Exists(path))
-            {
-                return;
-            }
-
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
@@ -83,7 +55,8 @@ namespace NetDog.Config
                 string key = element.Attributes["name"].InnerText;
                 object value = JsonConvert.DeserializeObject(element.InnerText, type);
 
-                _settings.Add(key, value);
+                _validator.InvokeMember(key, BindingFlags.SetProperty, null, null, new object[]{value});
+                //_settings.Add(key, value);
             }
         }
 
