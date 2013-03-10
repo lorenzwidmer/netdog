@@ -5,7 +5,7 @@ namespace NetDog.Config
     static class DB
     {
         private static Path _path = new Path(@".\Config\DB.xml");
-        private static SettingFile _file = new SettingFile(MethodBase.GetCurrentMethod().DeclaringType, _path);
+        private static ConfigXML _file = new ConfigXML(MethodBase.GetCurrentMethod().DeclaringType, _path);
 
         public static void Save()
         {

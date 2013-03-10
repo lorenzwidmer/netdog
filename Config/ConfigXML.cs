@@ -5,20 +5,20 @@ using System.Xml;
 
 namespace NetDog.Config
 {
-    class SettingFile
+    class ConfigXML
     {
-        private Type _validator;
+        private Type _parent;
 
-        public SettingFile(Type validator, Path path)
+        public ConfigXML(Type validator, Path path)
         {
-            _validator = validator;
+            _parent = validator;
             Load(path);
         }
 
         public void Save(Path path)
         {
             XmlDocument doc = new XmlDocument();
-            PropertyInfo[] properties = _validator.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            PropertyInfo[] properties = _parent.GetProperties(BindingFlags.Public | BindingFlags.Static);
             doc.AppendChild(doc.CreateElement("config"));
 
             foreach (PropertyInfo property in properties)
@@ -55,15 +55,14 @@ namespace NetDog.Config
                 string key = element.Attributes["name"].InnerText;
                 object value = JsonConvert.DeserializeObject(element.InnerText, type);
 
-                _validator.InvokeMember(key, BindingFlags.SetProperty, null, null, new object[]{value});
-                //_settings.Add(key, value);
+                _parent.InvokeMember(key, BindingFlags.SetProperty, null, null, new object[]{value});
             }
         }
 
         public void Validate(XmlDocument doc)
         {
             XmlNode root = doc["config"];
-            PropertyInfo[] properties = _validator.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            PropertyInfo[] properties = _parent.GetProperties(BindingFlags.Public | BindingFlags.Static);
 
             foreach (PropertyInfo property in properties)
             {
