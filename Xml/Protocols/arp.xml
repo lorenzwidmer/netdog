@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<packet>
+  <name>ARP</name>
+  <descripton>Address Resolution Protocol (ARP) is a protocol used for resolution of network layer addresses into link layer addresses.</descripton>
+  <type>NetDog.Protocol.Arp</type>
+  <dll>./</dll>
+  <fields>
+    <field name="HardwareType">
+      <length>2</length>
+    </field>
+    <field name="ProtocolType">
+      <length>2</length>
+    </field>
+    <field name="HardwareSize">
+      <length>1</length>
+    </field>
+    <field name="ProtocolSize">
+      <length>1</length>
+    </field>
+    <field name="Opcode">
+      <length>2</length>
+    </field>
+    <field name="SenderHardwareAddress">
+      <length>Arp.ProtocolSize</length>
+    </field>
+    <field name="SenderProtocolAddress">
+      <length>Arp.HardwareSize</length>
+    </field>
+    <field name="TargetHardwareAddress">
+      <length>Arp.ProtocolSize</length>
+    </field>
+    <field name="TargetProtocolAddress">
+      <length>Arp.HardwareSize</length>
+    </field>
+  </fields>
+</packet>
