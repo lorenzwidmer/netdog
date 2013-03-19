@@ -22,8 +22,18 @@ namespace NetDog
             //Config.NetDog.FirebirdClient = new Path(@".\Tools\Firebird\fbclient.dll");
             //Config.NetDog.Save();
 
-            Console.WriteLine(Config.DB.User);
-            Console.WriteLine(Config.NetDog.FirebirdClient);
+            PropertyInfo[] properties = typeof(Config.DB).GetProperties(BindingFlags.Public | BindingFlags.Static);
+            Path bla;
+
+            foreach (PropertyInfo property in properties)
+            {
+                Console.WriteLine(property.Name);
+                Console.WriteLine();
+                if (property.PropertyType == typeof(Path))
+                {
+                    bla = Convert.ChangeType(property.GetValue(null, null), property.PropertyType);
+                }
+            }
 
             Console.ReadLine();
             CaptureDeviceList devices = CaptureDeviceList.Instance;
