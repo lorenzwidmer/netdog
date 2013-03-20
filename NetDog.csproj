@@ -71,39 +71,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\DB.cs" />
-    <Compile Include="Config\NetDog.cs" />
+    <Compile Include="config\DB.cs" />
+    <Compile Include="config\NetDog.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Config\SettingFile.cs" />
-    <Compile Include="Tools\Path.cs" />
-    <Compile Include="Config\ConfigXML.cs" />
-    <Compile Include="Tools\Utility.cs" />
+    <Compile Include="tools\Path.cs" />
+    <Compile Include="config\ConfigXML.cs" />
+    <Compile Include="tools\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\SharpPcap\SharpPcap.dll.config" />
-    <None Include="Tools\Firebird\firebird.conf" />
-    <None Include="Tools\Firebird\firebird.log" />
-    <None Include="Tools\Firebird\firebird.msg" />
+    <None Include="library\sharpPcap\SharpPcap.dll.config" />
+    <None Include="tools\firebird\firebird.conf" />
+    <None Include="tools\firebird\firebird.log" />
+    <None Include="tools\firebird\firebird.msg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Library\Firebird\FirebirdSql.Data.FirebirdClient.dll" />
-    <Content Include="Library\Firebird\FirebirdSql.Data.FirebirdClient.pdb" />
-    <Content Include="Library\Json.Net\Newtonsoft.Json.dll" />
-    <Content Include="Library\Json.Net\Newtonsoft.Json.pdb" />
-    <Content Include="Library\Json.Net\Newtonsoft.Json.xml" />
-    <Content Include="Library\Packet.NET\PacketDotNet.dll" />
-    <Content Include="Library\Packet.NET\PacketDotNet.xml" />
-    <Content Include="Library\SharpPcap\SharpPcap.dll" />
-    <Content Include="Library\SharpPcap\SharpPcap.xml" />
-    <Content Include="Tools\Firebird\fbclient.dll" />
-    <Content Include="Tools\Firebird\ib_util.dll" />
-    <Content Include="Tools\Firebird\icudt30.dll" />
-    <Content Include="Tools\Firebird\icuin30.dll" />
-    <Content Include="Tools\Firebird\icuuc30.dll" />
-    <Content Include="Xml\Protocols\arp.xml">
+    <Content Include="library\firebird\FirebirdSql.Data.FirebirdClient.dll" />
+    <Content Include="library\firebird\FirebirdSql.Data.FirebirdClient.pdb" />
+    <Content Include="library\json.Net\Newtonsoft.Json.dll" />
+    <Content Include="library\json.Net\Newtonsoft.Json.pdb" />
+    <Content Include="library\json.Net\Newtonsoft.Json.xml" />
+    <Content Include="library\packet.NET\PacketDotNet.dll" />
+    <Content Include="library\packet.NET\PacketDotNet.xml" />
+    <Content Include="library\sharpPcap\SharpPcap.dll" />
+    <Content Include="library\sharpPcap\SharpPcap.xml" />
+    <Content Include="tools\firebird\fbclient.dll" />
+    <Content Include="tools\firebird\ib_util.dll" />
+    <Content Include="tools\firebird\icudt30.dll" />
+    <Content Include="tools\firebird\icuin30.dll" />
+    <Content Include="tools\firebird\icuuc30.dll" />
+    <Content Include="xml\protocols\arp.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="xml\protocols\ether.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

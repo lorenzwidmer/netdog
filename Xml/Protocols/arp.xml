@@ -2,11 +2,11 @@
 <packet>
   <name>ARP</name>
   <descripton>Address Resolution Protocol (ARP) is a protocol used for resolution of network layer addresses into link layer addresses.</descripton>
-  <type>NetDog.Protocol.Arp</type>
-  <dll>./</dll>
+  <type>NetDog.Protocol.ARP</type>
+  <dll></dll>
 
   <conditions>
-    <condition tree="Ether:Arp">Length > 22 &amp;&amp; Ether.Type == 0x0806</condition>
+    <condition tree="./Ether/ARP">Length > 22 &amp;&amp; Ether.Type == 0x0806</condition>
   </conditions>
   
   <structure>

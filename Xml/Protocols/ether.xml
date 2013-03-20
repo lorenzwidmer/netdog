@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<packet>
+  <name>Ether</name>
+  <descripton></descripton>
+  <type>NetDog.Protocol.Ether</type>
+  <dll></dll>
+
+  <conditions>
+    <condition tree="./Ether"></condition>
+  </conditions>
+
+  <structure>
+    <field name="DestinationMAC">
+      <description>
+        Specifies to which adapter the data frame is being sent. The Destination Address 1:1:1:1:1:1 specifies a Broadcast Message that is read in by all receiving Ethernet adapters.
+      </description>
+      <length>16</length>
+    </field>
+
+    <field name="SourceMAC">
+      <description>
+       Specifies from which adapter the message originated.
+      </description>
+      <length>16</length>
+    </field>
+
+    <field name="EtherType">
+      <description>
+        Identifies an upper layer protocol, encapsulating the frame data.
+      </description>
+      <length>8</length>
+    </field>
+    
+  </structure>
+</packet>
