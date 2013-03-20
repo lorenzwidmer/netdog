@@ -12,10 +12,8 @@ namespace NetDog
     class Program
     {
         static void Main(string[] args)
-        {
-            
+        {     
             CaptureDeviceList devices = CaptureDeviceList.Instance;
-
             if (devices.Count < 1)
             {
                 Console.WriteLine("No devices were found on this machine");
