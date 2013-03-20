@@ -100,7 +100,9 @@
     <Content Include="Tools\Firebird\icudt30.dll" />
     <Content Include="Tools\Firebird\icuin30.dll" />
     <Content Include="Tools\Firebird\icuuc30.dll" />
-    <Content Include="Xml\Protocols\arp.xml" />
+    <Content Include="Xml\Protocols\arp.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

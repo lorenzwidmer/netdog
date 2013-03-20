@@ -4,33 +4,73 @@
   <descripton>Address Resolution Protocol (ARP) is a protocol used for resolution of network layer addresses into link layer addresses.</descripton>
   <type>NetDog.Protocol.Arp</type>
   <dll>./</dll>
-  <fields>
+
+  <conditions>
+    <condition tree="Ether:Arp">Length > 22 &amp;&amp; Ether.Type == 0x0806</condition>
+  </conditions>
+  
+  <structure>
     <field name="HardwareType">
-      <length>2</length>
+      <description>
+        Specifies the network protocol type.
+      </description>
+      <length>16</length>
     </field>
+    
     <field name="ProtocolType">
-      <length>2</length>
+      <description>
+        Specifies the internetwork protocol for which the ARP request is intended.
+      </description>
+      <length>16</length>
     </field>
+    
     <field name="HardwareSize">
-      <length>1</length>
+      <description>
+        Length (in octets) of a hardware address.
+      </description>
+      <length>8</length>
     </field>
+    
     <field name="ProtocolSize">
-      <length>1</length>
+      <description>
+        Length (in octets) of addresses used in the upper layer protocol. (The upper layer protocol specified in ProtocolType) 
+      </description>
+      <length>8</length>
     </field>
+    
     <field name="Opcode">
-      <length>2</length>
+      <description>
+        Specifies the operation that the sender is performing: 1 for request, 2 for reply.
+      </description>
+      <length>16</length>
     </field>
+    
     <field name="SenderHardwareAddress">
-      <length>Arp.ProtocolSize</length>
+      <description>
+        Media address of the sender.
+      </description>
+      <length>Arp.ProtocolSize * 8</length>
     </field>
+    
     <field name="SenderProtocolAddress">
-      <length>Arp.HardwareSize</length>
+      <description>
+        Internetwork address of the sender.
+      </description>
+      <length>Arp.HardwareSize * 8</length>
     </field>
+    
     <field name="TargetHardwareAddress">
-      <length>Arp.ProtocolSize</length>
+      <description>
+        Media address of the intended receiver. This field is ignored in requests.
+      </description>
+      <length>Arp.ProtocolSize * 8</length>
     </field>
+    
     <field name="TargetProtocolAddress">
-      <length>Arp.HardwareSize</length>
+      <description>
+        internetwork address of the intended receiver.
+      </description>
+      <length>Arp.HardwareSize * 8</length>
     </field>
-  </fields>
+  </structure>
 </packet>

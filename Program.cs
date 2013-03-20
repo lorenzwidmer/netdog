@@ -13,6 +13,7 @@ namespace NetDog
     {
         static void Main(string[] args)
         {
+            
             CaptureDeviceList devices = CaptureDeviceList.Instance;
 
             if (devices.Count < 1)
